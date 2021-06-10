@@ -31,7 +31,7 @@ function routeTable(app){
 }
 
 function setupApp(app){
-    const session = require('express-session');
+    // const session = require('express-session');
     // const MongoDBStore = require('connect-mongodb-session')(session);
 
     app
