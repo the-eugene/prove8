@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prove 8</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <%
+            var url='?' + (locals.query?'query=' + query+'&':'');
+            var tp=total_pages;
+            if (page&&tp>1){%>
+                <div class="pagination">
+                    <%if(page>2){%><a href="<%=url%>page=1">&lt;&lt;</a><%}else{%><div></div><%}%>
+                    <%if(page>1){%><a href="<%=url%>page=<%=page-1%>">&lt;</a><%}else{%><div></div><%}%>
+                    <div><%=+page%></div>
+                    <%if(tp-page>0){%><a href="<%=url%>page=<%=+page+1%>">&gt;</a><%}else{%><div></div><%}%>
+                    <%if(tp-page>1){%><a href="<%=url%>page=<%=tp%>">&gt;&gt;</a><%}else{%><div></div><%}%>
+                </div>
+
+            <%}%>
+            <% if (products.length > 0) { %>
+            <h2>Product Listing</h2>
+            <form action="/search" method="get">
+              <input type="text" name="query" id="query">
+              <button type="submit">Search</button>
+            </form>
+            <div class="product-container">
+              <% for (product of products) { %>
+              <div class="product">
+                <div>
+                  <h3><%= product.name %> - $<%= product.price %></h3>
+                  <div class="product-image">
+                    <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                  </div>
+                </div>
+                <div>
+                  <p><%= product.description %></p>
+                  <p>Tags: <%= product.tags.join(", ") %></p>
+                </div>
+              </div>
+              <% } %>
+            </div>
+            <% } else { %>
+            <h2>No Products Found!</h2>
+            <% } %>
+          </div>
+    </main>
+</body>
+</html>
