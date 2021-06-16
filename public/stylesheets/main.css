@@ -121,7 +121,7 @@ table {
       display:flex;
       margin: auto;
       width: 150px;
-      justify-content: space-between;
+      justify-content: center;
 }
   .pagination>*{
       display:block;
@@ -129,7 +129,10 @@ table {
       color:#2c0d05;
       padding: 10px;
       font-size: 18pt;
-      
+      text-align: center;
+      flex-shrink: 0;
+      width:40px;
+      padding:0;
   }
 
 @media screen and (max-width: 400px) {
