@@ -1,0 +1,34 @@
+{
+    "avengers": [
+        {
+            "name": "Tony Stark",
+            "power":"Money",
+            "age": 51
+        },
+        {
+            "name": "Steve Rogers",
+            "power":"Super Strength",
+            "age": 93
+        },
+        {
+            "name": "Thor Odinson",
+            "power":"Hammer",
+            "age": 1500
+        },
+        {
+            "name": "Bruce Banner",
+            "power":"Anger",
+            "age": 52
+        },
+        {
+            "name": "Natasha Romanova",
+            "power":"Assassin Training",
+            "age": 32
+        },
+        {
+            "name": "Clint Barton",
+            "power":"Good Aim",
+            "age": 39
+        }
+    ]
+}

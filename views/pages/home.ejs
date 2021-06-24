@@ -4,42 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prove 9</title>
+    <title>Prove 10</title>
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <script src="/js/main_front.js"></script>
 </head>
-<body>
+<body onload="init()">
+    <header class="main-header"><h1>Prove 10</h1></header>
     <main>
-        <div class="container">
-            <%
-            var url='?' + (locals.query?'query=' + query+'&':'');
-            var tp=total_pages;
-            if (page&&tp>1){%>
-                <div class="pagination">
-                    <%if(page>2){%><a href="<%=url%>page=1">&lt;&lt;</a><%}else{%><div></div><%}%>
-                    <%if(page>1){%><a href="<%=url%>page=<%=page-1%>">&lt;</a><%}else{%><div></div><%}%>
-                    <div><%=+page%></div>
-                    <%if(tp-page>0){%><a href="<%=url%>page=<%=+page+1%>">&gt;</a><%}else{%><div></div><%}%>
-                    <%if(tp-page>1){%><a href="<%=url%>page=<%=tp%>">&gt;&gt;</a><%}else{%><div></div><%}%>
-                </div>
-
-            <%}%>
-            <% if (products.length > 0) { %>
-            <h2>Pokemon Listing</h2>
-            <!-- <form action="/search" method="get">
-              <input type="text" name="query" id="query">
-              <button type="submit">Search</button>
-            </form> -->
-            <div class="product-container">
-              <% for (product of products) { %>
-              <div class="product">
-                  <h3><%= product.name %></h3>
-              </div>
-              <% } %>
-            </div>
-            <% } else { %>
-            <h2>No Pokemon Found!</h2>
-            <% } %>
-          </div>
+        <table>
+            <thead><th>name</th><th>power</th><th>age</th></thead>
+            <tbody id="avengers"></tbody>
+            <tfoot><td><input type="text" id="name"></td><td><input type="text" id="power"></td><td><input type="number" id="age"></td></tfoot>
+        </table>
+        <div class="row"><button onclick="submit()">Save</button></div>
     </main>
 </body>
 </html>

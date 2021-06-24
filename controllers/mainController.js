@@ -1,12 +1,26 @@
-const Pokemon = require('../models/data');
+const { Body } = require('node-fetch');
+const data = require('../models/data.json');
+const { validationResult } = require('express-validator');
 
-exports.getPokemon = async (req, res, next) => {
-    let pokemon=await Pokemon.fetchPage(req.query.page??1,10);
-    let tp=Math.ceil(pokemon.count/10);
-    console.log(pokemon);
-        res.render('pages/home', {
-            products: pokemon.results,
-            page:req.query.page??1,
-            total_pages:tp,
-        });
-};
+exports.renderer=(req, res, next) => {res.render('pages/home')}
+exports.serveData=(req, res, next) => {res.json(data);}
+exports.updateData=async (req, res, next) => {
+    if(validationResult(req).isEmpty()){
+        let member={
+            name:req.body.name,
+            power:req.body.power,
+            age: req.body.age    
+        }
+
+        let i=data.avengers.findIndex((a)=>a.name===req.body.name);
+        if (i>=0)
+            data.avengers[i]=member;
+        else
+            data.avengers.push(member);
+        res.sendStatus(200);
+    }
+    else {
+        console.log("failed validation");
+        res.sendStatus(400);
+    }
+}

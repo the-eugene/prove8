@@ -2,10 +2,6 @@ const config= require('./config');
 const express=require('express');
 const app=express();
 const path=require('path');
-// const mongoose = require('mongoose');
-
-// const User = require('./models/user');
-
 setupApp(app);
 routeTable(app);
 // mongoose.connect(config.mongoURI, config.mongooseOptions).then(()=>{
@@ -37,7 +33,8 @@ function setupApp(app){
     app
     .set('view engine', 'ejs')
     .use(express.static(path.join(__dirname,'public')))
-    .use(express.urlencoded({extended: true})) //instead of body parser
+    //.use(express.urlencoded({extended: true})) //instead of body parser
+    .use(express.json())
     //set up sessions and session db storage.
     // .use(
     //     session({
